@@ -779,6 +779,31 @@ section { position: relative; z-index: 1; }
 .project-tag.teal { background: var(--c-teal-pale); color: var(--c-teal); }
 .project-tag.gray { background: var(--c-surface2); color: var(--c-text-muted); }
 
+/* ===== MOVIE RECOMMENDER: SEE MORE DETAILS ===== */
+.project-more-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 18px; padding: 9px 15px; border: 1px solid var(--c-primary);
+  border-radius: var(--radius-pill); background: transparent; color: var(--c-primary);
+  font: 600 12px var(--font-body), sans-serif; cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.project-more-btn:hover { background: var(--c-primary); color: var(--c-on-primary, #fff); transform: translateY(-2px); }
+.project-more-btn:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 3px; }
+.project-more-btn .more-arrow { display: inline-block; transition: transform 0.25s ease; }
+.project-more-btn[aria-expanded="true"] .more-arrow { transform: rotate(180deg); }
+.project-more-details { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--c-border); color: var(--c-text-muted); font-size: 12.5px; line-height: 1.75; }
+.project-more-details[hidden] { display: none; }
+.project-more-details h4 { margin: 17px 0 7px; color: var(--c-text); font-family: var(--font-display), sans-serif; font-size: 14px; font-weight: 700; }
+.project-more-details h4:first-child { margin-top: 0; }
+.project-more-details p { margin: 0 0 8px; }
+.project-more-details ul { padding-left: 18px; margin: 5px 0 12px; }
+.project-more-details li { margin-bottom: 5px; }
+.project-more-details .details-tech { display: flex; flex-wrap: wrap; gap: 7px; margin: 9px 0 12px; }
+.project-more-details .details-tech span { display: inline-block; padding: 4px 8px; border: 1px solid var(--c-border); border-radius: var(--radius-pill); background: var(--c-surface2); color: var(--c-text-muted); font-size: 10.5px; line-height: 1.5; }
+.project-more-details a { color: var(--c-primary); font-weight: 600; text-decoration: none; }
+.project-more-details a:hover { text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { .project-more-btn, .project-more-btn .more-arrow { transition: none; } }
+
 /* ===== EDUCATION ===== */
 #education {
   padding: 100px 0;
@@ -1636,7 +1661,7 @@ html.theme-anim *::after {
   <div class="container">
     <div class="section-label">Expertise</div>
     <h2 class="section-title reveal-up">Skills & Technologies</h2>
-    <p class="section-sub reveal-up">A broad skill set covering model training, application development, and the deployment of solutions using real-time data.</p>
+    <p class="section-sub reveal-up">A broad skill set spanning machine learning, recommendation systems, data engineering, APIs, MLOps, real-time pipelines, and cloud deployment.</p>
 
     <div class="skills-grid">
       <div>
@@ -1721,8 +1746,21 @@ html.theme-anim *::after {
             <span class="chip blue">SQLAlchemy</span>
             <span class="chip blue">pytest</span>
             <span class="chip orange">Random Forest</span>
+            <span class="chip orange">SVD</span>
+            <span class="chip orange">Alternating Least Squares (ALS)</span>
+            <span class="chip orange">Neural Collaborative Filtering</span>
+            <span class="chip blue">Surprise</span>
+            <span class="chip blue">implicit</span>
+            <span class="chip teal">FastAPI</span>
+            <span class="chip teal">REST API Development</span>
             <span class="chip teal">Flask REST API</span>
+            <span class="chip gray">Apache Airflow</span>
+            <span class="chip gray">Apache Kafka</span>
+            <span class="chip gray">Redis</span>
+            <span class="chip gray">SQL</span>
             <span class="chip gray">Docker Compose</span>
+            <span class="chip gray">Git</span>
+            <span class="chip gray">GitHub</span>
             <span class="chip gray">GitHub Actions (CI)</span>
             <span class="chip gray">Streamlit</span>
           </div>
@@ -1837,6 +1875,89 @@ html.theme-anim *::after {
     <p class="section-sub reveal-up">Selected academic and personal projects combining AI, data science, backend engineering and deployment.</p>
 
     <div class="projects-grid">
+      <!-- PERSONAL PROJECT: MOVIE RECOMMENDER SYSTEM -->
+      <div class="project-card">
+          <div class="project-icon">🎬</div>
+
+          <div class="project-meta" style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+            <span
+              style="font-size:11px;font-weight:600;background:var(--c-primary-pale);color:var(--c-primary);padding:3px 10px;border-radius:20px;">
+              🚀 Personal Project
+            </span>
+            <span
+              style="font-size:11px;font-weight:600;background:var(--c-accent-pale);color:var(--c-accent);padding:3px 10px;border-radius:20px;">
+              End-to-End ML & MLOps
+            </span>
+          </div>
+
+          <div class="project-name">Movie Recommender System</div>
+
+          <div class="project-desc">
+            An end-to-end movie recommendation platform built with Python,
+            FastAPI and PostgreSQL. Implements SVD, ALS and Neural
+            Collaborative Filtering, with Redis caching, Kafka streaming,
+            Airflow orchestration, MLflow experiment tracking, a Streamlit
+            dashboard, and AWS Lambda, API Gateway and S3 integration.
+          </div>
+
+          <div style="display:flex;gap:10px;margin:12px 0;flex-wrap:wrap;">
+            <div
+              style="background:var(--c-surface2);border-radius:10px;padding:8px 14px;text-align:center;min-width:70px;">
+              <div
+                style="font-family:var(--font-display),sans-serif;font-size:18px;font-weight:800;color:var(--c-primary);">
+                100K</div>
+              <div style="font-size:10px;color:var(--c-text-muted);font-weight:500;">Ratings</div>
+            </div>
+            <div
+              style="background:var(--c-surface2);border-radius:10px;padding:8px 14px;text-align:center;min-width:70px;">
+              <div
+                style="font-family:var(--font-display),sans-serif;font-size:18px;font-weight:800;color:var(--c-accent);">
+                3</div>
+              <div style="font-size:10px;color:var(--c-text-muted);font-weight:500;">ML Models</div>
+            </div>
+            <div
+              style="background:var(--c-surface2);border-radius:10px;padding:8px 14px;text-align:center;min-width:70px;">
+              <div
+                style="font-family:var(--font-display),sans-serif;font-size:18px;font-weight:800;color:var(--c-teal);">
+                10</div>
+              <div style="font-size:10px;color:var(--c-text-muted);font-weight:500;">Tests Passed</div>
+            </div>
+          </div>
+
+          <div class="project-tags">
+            <span class="project-tag blue">Python</span>
+            <span class="project-tag teal">FastAPI</span>
+            <span class="project-tag gray">PostgreSQL</span>
+            <span class="project-tag orange">Docker</span>
+            <span class="project-tag blue">MLflow</span>
+            <span class="project-tag teal">Kafka</span>
+            <span class="project-tag gray">Redis</span>
+            <span class="project-tag orange">Airflow</span>
+            <span class="project-tag orange">AWS</span>
+            <span class="project-tag blue">Streamlit</span>
+          </div>
+
+
+          <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;">
+            <a href="https://github.com/Wassef-Ben-Rgaya/movie-recommender" target="_blank" rel="noopener noreferrer"
+              style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--c-primary);text-decoration:none;">
+
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.54v-2.1c-3.09.67-3.74-1.31-3.74-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.23.92.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.5 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.95 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.53.23 2.67.12 2.95.71.78 1.14 1.77 1.14 2.99 0 4.27-2.61 5.22-5.1 5.5.4.34.75 1 .75 2.02v3c0 .3.2.65.76.54A11.1 11.1 0 0 0 12 .9Z" />
+              </svg>
+
+              View on GitHub
+            </a>
+
+            <a href="https://ebayw333oc.execute-api.eu-north-1.amazonaws.com/default/recommendations/1?n=5"
+              target="_blank" rel="noopener noreferrer"
+              style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--c-accent);text-decoration:none;">
+              Live API Demo 
+            </a>
+          </div>
+          <a class="project-more-btn" href="movie-recommender-details.html">See More <span class="more-arrow" aria-hidden="true">↗</span></a>
+        </div>
 
       <!-- PERSONAL PROJECT: FRAUD DETECTION PLATFORM -->
       <div class="project-card">
@@ -1878,6 +1999,7 @@ html.theme-anim *::after {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
           View on GitHub
         </a>
+        <a class="project-more-btn" href="fraud-detection-details.html">See More <span class="more-arrow" aria-hidden="true">↗</span></a>
       </div>
 
       <div class="project-card">
